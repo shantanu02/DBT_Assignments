@@ -1,0 +1,112 @@
+EXERCISE 1 :-
+==========
+
+USE exercise_dbt;
+
+CREATE TABLE IF NOT EXISTS SEMP (
+EMPNO CHAR(4),
+EMPNAME CHAR(20),
+BASIC FLOAT(9,2),
+DEPTNO CHAR(2),
+DEPTHEAD CHAR(4)
+);
+
+INSERT INTO SEMP
+VALUES (0001,'SUNIL',6000,10,NULL),(0002,'HIREN',8000,20,NULL),(0003,'ALI',4000,10,0001),(0004,'GEORGE',6000,0002,NULL);
+
+SELECT * FROM SEMP;
+
+CREATE TABLE IF NOT EXISTS SDEPT(
+DEPTNO CHAR(2),
+DEPTNAME CHAR(15)
+);
+
+INSERT INTO SDEPT 
+VALUES ('10','Development'),('20','Training');
+
+SELECT * FROM SDEPT;
+
+
+#############################################################################################################
+create table if not exists SUPPLIER(
+`S#` char(4),
+Sname varchar(25),
+Status int,
+City char(15)
+);
+insert into SUPPLIER 
+values ('S1','Shantanu',10,'London'),('S2','Vipul',20,'Paris'),
+        ('S3','Aditya',30,'Athens'),('S4','Soni',40,'Boston'),
+        ('S5','Tony',60,'Sydeny'),('S6','Killer',50,'New York');
+select * from SUPPLIER;
+
+drop table parts;
+create table if not exists PARTS(
+`P#` char(4),
+Pname varchar(25),
+Color varchar(25),
+Weight float(5,2),
+City char(15)
+);
+insert into PARTS
+values ('P1','part a','blue',56.9,'London'),('P2','part b','green',67.4,'Paris'),
+        ('P3','part c','red',34.00,'Athens'),('P4','part d','yellow',78.98,'Boston'),
+        ('P5','part e ','green',34.65,'Sydeny'),('P6','part f','black',54.87,'New York');
+select * from PARTS;
+
+create table if not exists PROJECTS(
+`J#` char(4),
+Jname varchar(25),
+City char(15)
+);
+insert into PROJECTS
+values ('J1','iNSCRIBE MESSENGER','London'),('J2','INCEPTION','Paris'),
+        ('J3','ADS','Athens'),('J4','LMS','Boston'),
+        ('J5','BANK MANAGMENT ','Sydeny'),('J6','ALS','New York');
+SELECT * FROM PROJECTS;        
+        
+
+create table if not exists SUPPLIER_PARTS_PROJECT(
+`S#` char(4),
+`P#` char(4),
+`J#` char(4),
+Qty float(5,2)
+);
+insert into SUPPLIER_PARTS_PROJECT
+values('S1','P2','J3',23.65),('S2','P4','J6',23.65),('S3','P3','J6',23.65),
+		('S4','P6','J6',23.65),('S5','P3','J5',23.65),('S6','P1','J2',23.65);
+select * from SUPPLIER_PARTS_PROJECT;
+
+#5
+Select * from SUPPLIER;
+
+#6
+select `S#`, Sname from SUPPLIER;
+
+#7
+select Pname,Color from PARTS where city= 'London';
+
+#8
+select * from SUPPLIER where city = 'London';
+
+#9
+select * from SUPPLIER where city = 'Paris' OR city='Athens';
+
+#10
+Select * from Projects where city = 'Athens';
+
+#11
+select * from PARTS where weight >=12 and  weight<=14;
+
+#12
+select * from SUPPLIER where `Status` >= 20 ; 
+
+#13
+select * from SUPPLIER where City != 'London';
+
+#14
+select City from Supplier; 
+
+#15
+select Weight as `Weight in grams`,Weight*1000 AS `weight in milligrams`, Weight/1000 As `Weight in killograms` from parts;
+
