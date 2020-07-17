@@ -81,6 +81,10 @@ SELECT Rating,Cname FROM CUSTOMERS WHERE City = "San Jose";
 
 SELECT DISTINCT Snum FROM ORDERS;
 
+select distinct  S.snum
+from salespeople S,orders O
+where S.Snum=O.Snum;
+
 #Assignment_5
 
 -- Ques 1
