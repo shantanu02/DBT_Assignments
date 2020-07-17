@@ -14,7 +14,7 @@ Introducing Relational Databases.
     For Column : Attribute ,  Method
 
 4) Why isn’t it possible to see the first five rows of a table?
---->"SELECT TOP 5 * FROM <table_name>;" using this query we can see first 5 rows of a table.
+--->"SELECT * FROM <table_name> LIMIT 5;" using this query we can see first 5 rows of a table.
 
 Assignment –3
 --------------
