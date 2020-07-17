@@ -92,7 +92,7 @@ SELECT Sname,City FROM SALESPEOPLE WHERE City = "London" AND Comm > .10;
 
 -- Ques 3 
 
-SELECT * FROM CUSTOMERS WHERE City = "Rome" AND Rating > 100;
+SELECT * FROM CUSTOMERS WHERE Rating > 100 OR City = "Rome" ;
 
 -- Ques 6
 
