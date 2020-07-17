@@ -96,5 +96,5 @@ SELECT * FROM CUSTOMERS WHERE City = "Rome" AND Rating > 100;
 
 -- Ques 6
 
-SELECT Snum,Sname,City,Comm FROM SALESPEOPLE WHERE Comm > .12 OR Comm < .14;
+SELECT Snum,Sname,City,Comm FROM SALESPEOPLE ;
 
