@@ -110,7 +110,7 @@ Select * from orders where Odate = '1990-10-03' or Odate = '1990-10-04';
 Select * from Orders where Odate in ('1990-10-03' , '1990-10-04');
 
 -- Ques 2 
-select * from customers c,salespeople s where s.snum = 1001 or s.snum = 1004;
+select * from customers where Snum in ( select Snum from salespeople where sname in ('peel', 'Motika'));
 
 -- Ques 3 
 Select * from Customers where Cname >= 'A' and Cname < 'H';
