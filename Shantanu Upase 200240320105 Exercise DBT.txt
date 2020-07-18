@@ -110,3 +110,25 @@ select City from Supplier;
 #15
 select Weight as `Weight in grams`,Weight*1000 AS `weight in milligrams`, Weight/1000 As `Weight in killograms` from parts;
 
+#Exercise 2
+-- 1 
+Select * from supplier ORDER BY City desc;
+
+-- 2 
+Select * from parts order by City , Pname asc;
+
+-- 3 
+Select * from supplier where status   between 10 and 20 ; 
+
+-- 4 
+Select Pname, Weight from Parts where Weight not between 10 and 15;
+
+-- 5
+Select Pname from Parts where Pname like 'p%';
+
+-- 6 
+Select * from Supplier where city like 'L%';
+
+-- 7 
+Select * from projects where Jname like '__s%';
+
