@@ -113,7 +113,7 @@ Select * from Orders where Odate in ('1990-10-03' , '1990-10-04');
 select * from customers c,salespeople s where s.snum = 1001 or s.snum = 1004;
 
 -- Ques 3 
-Select * from Customers where Cname >= 'A' and Cname <= 'G';
+Select * from Customers where Cname >= 'A' and Cname < 'H';
 
 -- Ques 4 
 Select * from Customers where Cname like 'C%';
