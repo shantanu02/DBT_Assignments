@@ -132,3 +132,35 @@ Select * from Supplier where city like 'L%';
 -- 7 
 Select * from projects where Jname like '__s%';
 
+#Exercise 3 
+-- 1 
+Select concat(Upper(Substring(Sname,1,1)),lower(Substring(Sname,2,length(Sname)))) from Supplier;
+
+-- 2 
+SELECT upper(Sname) from supplier;
+
+-- 3 
+SELECT lower(Sname) from supplier;
+
+-- 4 
+Select lpad(Sname,25,' ') from supplier;
+
+-- 5
+SELECT replace(Sname,'ta','ro') from supplier;
+
+-- 6
+select replace(replace(sname,'a','z'),'S','X') from supplier;
+
+-- 7 
+Select Sname,length(Sname) as `Length of Sname` from supplier;
+
+-- 8 
+Select Sname from Supplier where soundex(Sname) = soundex('AADAM');
+
+-- 9 
+
+
+-- 10
+use mysql;
+Select dayname(Curdate()) from dual;
+
