@@ -110,6 +110,7 @@ select City from Supplier;
 #15
 select Weight as `Weight in grams`,Weight*1000 AS `weight in milligrams`, Weight/1000 As `Weight in killograms` from parts;
 
+=================================================================================================================================================================================
 #Exercise 2
 -- 1 
 Select * from supplier ORDER BY City desc;
@@ -132,6 +133,7 @@ Select * from Supplier where city like 'L%';
 -- 7 
 Select * from projects where Jname like '__s%';
 
+=================================================================================================================================================================================
 #Exercise 3 
 -- 1 
 Select concat(Upper(Substring(Sname,1,1)),lower(Substring(Sname,2,length(Sname)))) from Supplier;
@@ -163,4 +165,6 @@ Select Sname from Supplier where soundex(Sname) = soundex('AADAM');
 -- 10
 use mysql;
 Select dayname(Curdate()) from dual;
+
+=================================================================================================================================================================================
 
