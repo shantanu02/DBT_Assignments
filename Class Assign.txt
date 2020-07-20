@@ -11,4 +11,4 @@ Select concat(Upper(Substring(ename,1,1)),lower(Substring(ename,2,length(ename))
 
 select rpad(lpad(ename,20,' '),20,' ') from Emp;
 
-select replace(replace(Ename,'a','l'),'r','o') from Emp;
+select replace(replace(replace(replace(replace(Ename,'a',''),'e',''),'i',''),'o',''),'u','') from Emp;
