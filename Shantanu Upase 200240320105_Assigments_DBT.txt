@@ -121,5 +121,49 @@ Select * from Customers where Cname like 'C%';
 -- Ques 5 
 Select * from orders where (amt is not NULL and amt != 0); 
 
+-- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+#Assignment 7
+
+-- 1 
+Select count(*) from orders where odate = '1990-10-03';
+
+-- 2 
+Select count(distinct city) from customers;
+
+-- 3 
+select Cnum,min(amt) from orders
+GROUP BY Cnum;
+
+-- 4 
+select Cname from customers where Cname like 'G%' order by Cname;
+
+-- 5 
+SELECT City , max(rating) from customers
+group by City;
+
+-- 6 
+select Snum,count(*) from orders 
+group by Snum ;
+ 
+ -- --------------------------------------------------------------------------------------------------------------------------------------------------
+ 
+ #Assignment 8
+ -- 1 
+select Onum , Snum , .12 * amt as `12 % of amount` 
+from orders o;
+ 
+ -- 2
+ select City `For the city : `,max(rating) `the highest rating : `
+ from customers 
+ group by city ;
+ 
+ -- 3 
+ select c.rating , c.Cname , c.Cnum
+ from customers c order by rating desc;
+
+-- 4 
+select sum(amt),Odate
+from orders  
+group by Odate;
 
