@@ -175,3 +175,52 @@ Select dayname(Curdate()) from dual;
 
 =================================================================================================================================================================================
 
+-- -----------------------------------------------------------------------------------------------------------------------------------------------
+
+# Exercise 4 
+
+-- 1
+ select min(status) from supplier;
+ 
+ -- 2 
+ select max(weight) from parts;
+ 
+ -- 3 
+ select avg(weight) from parts;
+ 
+ -- 4 
+ select sum(Qty) from supplier_parts_project where `P#` = 'P1';
+ 
+-- 5 
+select sum(Qty) , `P#`
+from supplier_parts_project
+group by `P#`;
+
+-- 6
+select `P#`,avg(qty) from supplier_parts_project group by `P#`;
+ 
+ -- 7 
+ select `P#`,max(qty) from supplier_parts_project where qty > 800 group by `P#`;
+ 
+ -- 8 
+ select status , count(*) from supplier group by status;
+
+-- 9 
+select city , count(*) from projects group by city ;
+
+-- 10 
+-- Count (status) will count the number of status but didn't consider the row where the entry is null. 
+-- Count (*) will count all the rows including null as well.
+
+-- 11
+ 
+select case 
+when status = 10 then 'Ten'
+when status = 20 then 'Twenty'
+when status = 30 then 'Thirty'
+ 
+end  Result, count(Status)
+from supplier
+group by status;
+
+===============================================================================================================================================================================
