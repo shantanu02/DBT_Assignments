@@ -160,7 +160,14 @@ Select Sname,length(Sname) as `Length of Sname` from supplier;
 Select Sname from Supplier where soundex(Sname) = soundex('AADAM');
 
 -- 9 
-
+select * from supplier;
+select case 
+when status = 10 then 'Ten'
+when status = 20 then 'Twenty'
+when status = 30 then 'Thirty'
+else 'Others' 
+end  Result
+from supplier;
 
 -- 10
 use mysql;
