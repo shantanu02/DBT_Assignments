@@ -167,3 +167,44 @@ select sum(amt),Odate
 from orders  
 group by Odate;
 
+
+-- --------------------------------------------------------------------------------------------------------------------------
+#Assignment 9 
+
+-- 1
+select o.Onum , c.Cname 
+from orders o , customers c 
+where o.Cnum = o.Cnum;
+
+-- 2 
+select s.Sname , c.Cname , o.Onum
+from salespeople s , customers c , orders o 
+where s.Snum = c.Snum and 
+	  o.Snum = s.Snum and 
+      o.Cnum = c.Cnum;
+
+-- 3 
+select c.Cname , s.Sname , s.comm
+from salespeople s , customers c 
+where s.Snum = c.Snum;
+
+-- 4 
+select s.comm * o.amt
+from salespeople s , customers c ,orders o
+where s.Snum = c.Snum and o.Snum = s.Snum and
+		c.rating > 100; 
+        
+-- --------------------------------------------------------------------------------------------------------------------------------
+
+#Assignment 10 
+
+-- 1 
+select a.Sname , b.Sname , a.city
+from salespeople a , salespeople b 
+where a.city = b.city and a.Sname > b.Sname;
+
+-- 2 
+select Cname , City
+from customers 
+where rating in (select rating from customers where Cname = 'Hoffman');
+-- --------------------------------------------------------------------------------------------------------------------------------
