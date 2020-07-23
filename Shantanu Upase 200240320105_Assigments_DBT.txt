@@ -208,3 +208,26 @@ select Cname , City
 from customers 
 where rating in (select rating from customers where Cname = 'Hoffman');
 -- --------------------------------------------------------------------------------------------------------------------------------
+
+# Assignment 11
+
+-- 1 
+select Onum 
+from orders where Cnum =
+(select Cnum from Customers where Cname = 'Cisneros');
+
+-- 2 
+select Cname , Rating 
+from customers
+where Cnum in (select Cnum 
+			   from orders 
+               where amt > (select avg(amt) 
+							from orders));
+                            
+-- 3 
+select Snum , sum(amt) 
+from orders 
+group by Snum
+having sum(amt) > (select max(amt) from orders);
+
+-- --------------------------------------------------------------------------------------------------------------------------------------------------
