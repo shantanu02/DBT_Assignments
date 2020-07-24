@@ -266,4 +266,77 @@ where amt >ANY(select min(amt) from orders , customers
 		       customers.city ='london');
 
 -- -------------------------------------------------------------------------------------------------------------------------------------------------
+#Assignment 13 
 
+-- 1
+select Cname , City , (case when rating >= 200 then 'High Rating' else 'Low rating'end ) as rating from customers
+union
+select Cname , City , (case when rating < 200 then 'Low Rating' else 'High rating' end ) as rating from customers;
+ 
+ -- 2 
+ select salespeople.Snum , Sname , Cname  
+ from salespeople , customers
+ where salespeople.Snum = Customers.Snum and 
+	  Customers.Snum in (Select Snum from customers 
+			   GROUP BY Snum 
+               HAVING count(Snum) > 1)
+Order by Sname , Cname;
+
+ -- 3
+ select Snum from salespeople where city = 'San Jose'
+ union 
+ select distinct Snum from orders 
+ where Snum in (Select snum from orders
+				where Odate = '1990-10-03');
+ 
+ 
+ -- ---------------------------------------------------------------------------------------------------------------------------------------------
+ #assignment 14
+ 
+ --  1
+ insert into salespeople(city , Sname , comm , Snum) values ('San Jose','Blanco',NULL,1100);
+ 
+-- 2
+delete from orders where Cnum = (select Cnum from customers where Cname = 'Clemens');
+
+-- 3 
+update customers set rating = rating + 100 where City = 'Rome';
+
+-- 4 
+UPDATE customers
+SET snum=
+  (SELECT snum
+   FROM salespeople
+   WHERE sname='serres')
+WHERE snum =
+    (SELECT snum
+     FROM salespeople
+     WHERE sname='Motika');
+
+-- ---------------------------------------------------------------------------------------------------------------------------------------------
+
+#Assignment 15
+
+-- 1 
+CREATE table Multicast as 
+select * from salespeople
+Where Snum in (select Snum from customers
+				group by Snum 
+                having count(Snum) > 1);
+select * from Multicast;
+
+-- 2 
+DELETE from customers
+WHERE cnum=ANY
+    (SELECT cnum
+     FROM orders
+     WHERE cnum NOT IN(SELECT cnum
+					   FROM customers));
+
+-- 3 
+update salespeople set comm = comm + .20
+where  Snum in (select Snum  from orders 
+				group by Snum
+                having sum(amt) >=3000);
+
+-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
