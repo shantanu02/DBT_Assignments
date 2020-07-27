@@ -342,3 +342,115 @@ where  Snum in (select Snum  from orders
                 having sum(amt) >=3000);
 
 -- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#Assingment 16 
+
+-- 1
+create index ind_Odate on orders(Odate);
+show index from orders;
+-- 2
+#by using primary key constarints 
+
+-- 3 
+create index i_Odate on orders(Odate);
+
+-- 4 
+ALTER TABLE customers MODIFY rating int PRIMARY KEY;
+
+-- --------------------------------------------------------------------------------------------------------------------------------------------------
+
+#Assignment 17
+
+-- 1
+create table orderC (
+Onum int(4) unique,
+amt float(7,2),
+Odate date,
+Cnum int(4),
+Snum int(4),
+Unique(Cnum , Snum)
+);
+select * from orderC;
+
+-- 2 
+create table salespeopleC(
+Snum INT(4) primary key,
+Sname VARCHAR(10) check (Sname >='A'and Sname < 'N'),
+City VARCHAR(10),
+Comm FLOAT(3,2) default .10 not null check(ifnull(comm, .10))
+);
+
+select * from salespeopleC;
+
+-- 3 
+create table orderC1 (
+Onum int(4) not null,
+amt float(7,2),
+Odate date,
+Cnum int(4) not null,
+Snum int(4) not null,
+CONSTRAINT on_cn_sn check(cnum>cnum AND cnum>snum) 
+);
+
+select * from orderC1;
+
+-- ---------------------------------------------------------------------------------------------------------------------------------------------
+#Assignments 18 
+
+-- 1 
+drop table CityOrders;
+create table Cityorders as 
+select Onum  , amt , Snum , Cnum , City
+from orderC natural join customers;
+
+alter TABLE cityorders add constraint Onum_fk foreign key (Onum) references orderC(Onum);
+
+-- 2 
+CREATE TABLE IF NOT EXISTS orderC2(
+Onum INT(4),
+Amt FLOAT(7,2),
+Odate DATE,
+Cnum INT(4),
+Snum INT(4),
+prev int(4),
+foreign key(prev) references Cityorders(Onum)
+);
+
+-- ---------------------------------------------------------------------------------------------------------------------------------------------
+#Assignments 19
+
+create view cust_view as 
+select * from customers
+where rating =(select max(rating) from customers);
+
+select * from cust_view;
+
+-- 2 
+create view salespeople_view as
+select city , count(*)  
+from salespeople
+group by city;
+
+select * from salespeople_view;
+
+-- 3 
+create view salespeople_orders_view as
+select salespeople.Snum,salespeople.Sname, count(orders.Onum) , avg(orders.amt)
+from orders, salespeople
+where orders.Snum = salespeople.Snum
+group by salespeople.Snum,salespeople.Sname;
+
+select * from salespeople_orders_view;
+
+-- 4 
+create view salespeople_customers_view as
+select salespeople.Sname, count(Customers.Snum)
+from salespeople , customers
+where salespeople.Snum = customers.Snum
+group by  salespeople.Sname
+having count(Customers.Snum) > 1;
+
+select * from salespeople_customers_view ;
+
+-- ---------------------------------------------------------------------------------------------------------------------------------------------
+
