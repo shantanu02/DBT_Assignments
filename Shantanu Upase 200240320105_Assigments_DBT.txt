@@ -299,7 +299,11 @@ select onum from orders where odate='1990-10-03');
 delete from orders where Cnum = (select Cnum from customers where Cname = 'Clemens');
 
 -- 3 
-update customers set rating = rating + 100 where City = 'Rome';
+update customers set rating = (rating + 100)
+where rating in
+(select rating from customers 
+where City = 'Rome');
+
 
 -- 4 
 UPDATE customers
