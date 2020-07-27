@@ -283,12 +283,11 @@ select Cname , City , (case when rating < 200 then 'Low Rating' else 'High ratin
 Order by Sname , Cname;
 
  -- 3
- select Snum from salespeople where city = 'San Jose'
- union 
- select distinct Snum from orders 
- where Snum in (Select snum from orders
-				where Odate = '1990-10-03');
- 
+select snum from salespeople where city='San Jose' 
+union 
+(select cnum from customers where city='San Jose' 
+union all 
+select onum from orders where odate='1990-10-03');
  
  -- ---------------------------------------------------------------------------------------------------------------------------------------------
  #assignment 14
