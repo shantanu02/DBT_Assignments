@@ -352,7 +352,7 @@ show index from orders;
 #by using primary key constarints 
 
 -- 3 
-create index i_Odate on orders(Odate);
+create index i_Odate_Snum on orders(Odate,Snum);
 
 -- 4 
 ALTER TABLE customers MODIFY rating int PRIMARY KEY;
