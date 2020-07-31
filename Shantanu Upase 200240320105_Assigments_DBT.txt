@@ -474,3 +474,38 @@ Snum INT(4)
 create view Entryorders as 
 select * from ORDERS_NEW;
 -- -------------------------------------------------------------------------------------------------------------------------------------------------
+#Assignment - 21
+							
+
+
+#1) 
+
+	grant update on customer to Amit;
+
+-- ---------------------------------------------------------------------------------------------------------------------------------
+#2) 
+
+	AKshay_mysql> grant select on orders to Manoj;
+	Manoj_mysql> grant select on orders to public;
+
+-- ---------------------------------------------------------------------------------------------------------------------------------
+#3) 
+	revoke insert on salespeople from Ajita; 
+
+-- ---------------------------------------------------------------------------------------------------------------------------------
+#4) 	
+
+	mysql> 	create view customer1
+		as
+		select * from customer where rating between 100 and 500; 
+
+
+	mysql>	Grant insert, update on customer1 to Abhijeet
+	
+-- ---------------------------------------------------------------------------------------------------------------------------------
+#5) 	
+	create view customer1
+	as
+	select * from customer where rating = (select min(rating) from customer) ;
+	
+	Grant select on customer1 to Vikram;
